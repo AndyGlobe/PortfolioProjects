@@ -96,13 +96,20 @@ order by Total_Death_Count DESC
 
 -- Global Numbers
 
-SELECT SUM(new_cases) AS NewCases, SUM(new_deaths) AS NewDeaths, 
+SELECT SUM(new_cases) AS total_cases, SUM(new_deaths) AS total_deaths, 
 SUM(new_deaths)/SUM(new_cases)*100 AS Death_Percent_In_Cases
 FROM PortfolioProject.. Covid_death
 --WHERE location like '%Australia%'
 WHERE new_cases <> 0
+and location not in ('World', 'European Union', 'International',
+'low income', 'Lower middle income', 'Upper middle income', 'Europe',
+'High income') and
+continent not in ('World', 'European Union', 'International',
+'low income', 'Lower middle income', 'Upper middle income',
+'High income')
 --Group BY date
 --order by 1,2
+
 
 
 -- Looking at Total Population vs Vaccination
